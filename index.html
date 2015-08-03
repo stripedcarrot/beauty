@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 	<title>TriVision Beauty Directory</title>
+ 	 <meta charset="utf-8">
+ 	 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+ 	 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+
+
+   <link rel="stylesheet" href="css/trivisionstyle.css"> 
+	 
+ <!--Modernizr - for older browsers-->
+   <script src="js/vendor/modernizr.js"></script>
+   
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="./js/main.js"></script>
+    <!--maps API, need to create API key for it to work-->
+    
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+<!--jQuery validation for login & registration pages-->
+   <script src="js/jquery-validation-1.12.0/dist/jquery.valudate.min.js">
+   </script>
+<script type="text/javascript" src="meter-polyfill.js"></script>
+    <style>
+        @import url('meter-polyfill.css');
+   </style>
+<!--styling for Sign Up button on page 4 and 5-->
+<style>
+*
+#sign_user{
+  font-size:14px;
+  color:#FFF;
+  text-align:center;
+  background-color:#615d5d;
+  padding:10px;
+  margin-top:10px;
+  cursor: pointer;
+  }
+#errorBox{
+  color:#F00;
+  } 
+</style>
+
+
+
+</head> 
+<body>
+
+   <!-- Page 1 - HOME PAGE -->
+   <dl>
+<dt>Normal</dt>
+<dd><meter min="0.6" value="4.89" max="5.09"></meter></dd>
+<dt>Too High</dt>
+<dd><meter min="0" high="8" value="9" max="10"></meter></dd>
+<dt>Too Low</dt>
+<dd><meter min="0" low="3" value="2" max="10"></meter></dd>
+<dt>Optimal</dt>
+<dd><meter min="0" value="5" max="10"></meter></dd>
+<dt>Text value in meter node</dt>
+<dd><meter min="0" value="5" max="10">Cooties</meter></dd>
+ 
+<dt>High greater than Max</dt>
+<dd><meter min="0" value="5" max="10"></meter></dd>
+<dt>Low greater than Min</dt>
+<dd><meter min="0" high="8" value="9" max="10"></meter></dd>
+ 
+<dt>Value greater than Max</dt>
+<dd><meter min="4" value="11" max="10"></meter></dd>
+<dt>Value lesser than Min</dt>
+<dd><meter min="4" value="0" max="10"></meter></dd>
+</dl>
+
+   <div data-role="page" id="home" class="ui-page-theme-b"> <!--theme B is black/grey-->
+  
+
+    <div data-role="header">
+
+           <!--logo image-->
+           <img src="images/Logo1.png"  width="20%">
+
+    <!--grid with anchor button, links to page 4, style top right in CSS-->
+    <div class="ui-grid-a ui-responsive"> 
+
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" type="text/javascript"></script>
+   
+ 
+   </div>    
+
+   </div>
+
+
+    <div data-role="content">
+       
+<div class="imageslider">
+       <div data-role="imageslider"> 
+     <!--image slider & images-->
+<img id = "treatments" src="images/slideshow1.jpg" alt="salon treatments" title="treatment"   />
+       </div>
+     </div>
+
+     
+
+
+    <!--dropdown list for salons-->
+    <div class="ui-field-contain"> <!-- Please be careful with this code a s effects map position  -->
+        <select name="select-custom-22" id="select-custom-22" data-native-menu="false">
+            <option>Location</option>
+          <!--<option value="1">put salons search here - dont take out below untiul ready for them-->            
+              <option value="2">Dublin 1</option>
+              <option value="3">Dublin 2</option>
+              <option value="4">Dublin 3</option>
+              <option value="5">Dublin 4</option>
+              <option value="6">Dublin 5</option>
+              <option value="7">Dublin 6</option>
+              <option value="8">Dublin 7</option>
+              <option value="9">Dublin 8</option>
+              <option value="10">Dublin 9</option>
+              <option value="11">Dublin 10</option>
+        </select>
+    </div>
+
+
+
+
+<form> <!--dropdown list for Services-->
+   <div class="ui-field-contain">
+       <select name="select-custom-23" id="select-custom-23" data-native-menu="false">
+       <option>Service</option>
+       <option value="1">Haircut</option>
+       <option value="3">Nails </option>
+       <option value="3">Spray tan</option>
+       
+   </select>
+</div>
+</form>
+
+
+
+
+<a href="#directoryBrowser" class="ui-btn ui-corner-all">Find Salon</a>
+<!--anchor button, links to page 2-->
+
+
+   	 </div>
+
+     <div data-role="footer" data-id="foo1" data-position="fixed">
+  
+  <div data-role="navbar"> <!-- /navbar -->
+           
+       <ul>
+           <li><a href="#home" data-icon="home">Home</a></li>
+           <li><a href="#directoryBrowser" data-icon="location">Browser</a></li>
+           <li><a href="#salon" data-icon="heart">Salon</a></li>
+           <li><a href="#myAccountLogin" data-icon="eye">Account</a></li>
+           <li><a href="#spReg" data-icon="user">Login</a></li>
+       </ul>
+    </div>
+     	 
+   	 </div>
+
+   </div>
+
+
+<!-- Page 2 - Directory Browser   -->
+     <div data-role="page" id="directoryBrowser" class="ui-page-theme-b">
+ <a href="#home" data-rel="back" data-icon="back" class="ui-btn ui-icon-back ui-btn-icon-left ui-shadow ui-btn ui-corner-all ui-mini"></a>
+     
+
+     <div data-role="header">
+
+           <!--logo image-->
+           <img src="images/Logo1.png"  width="20%">
+
+     </div>
+	     <!-- Please dont touch this code   below -->
+
+    <h3>Salon Location</h3><br/>
+    <div>
+        <div>
+            <div>
+                <select name="mydropdown" id="addressinput">
+                    <option id = "option1">Stephens Green Centre</option>
+                    <option id = "option2">Georges Street</option>
+                    <option id = "option3">Camden Street</option>
+                    <option id = "option4">Main Street Malahide</option>
+                    <option id = "option5">Main Street Dunlaoghaire</option>
+                    <option id = "option6">Rindoon Park, Athlone</option>
+                    <option id = "option7">Scarlett Street, Drogheda</option>
+                </select>
+            </div>
+            <div>
+                <input id="Button1" type="button" value="Map" class = "button"/>
+            </div>
+            <div id="l1"></div>
+        </div>
+</div>
+    <div>
+        <div class="mapholder">
+            <div id="map" style="height: 250px; width: 350px;"></div>
+        </div>
+    </div>
+    <script src="./js/main.js"></script>
+     <div data-role="content"> 
+          Search results: <br/>
+
+<!--List view of salons-->
+        <ul data-role="listview" data-inset="true">
+    <li><a href="#salon">
+        <img id ="myimage" src ="">
+    <h2 id ="salonname">Salon 1</h2>
+    <p >Contact: <span id ="mycontact"></span></p>
+    <p >Telephone: <span id ="mytelephone"></span></p>
+    <p >Web: <span id ="myweb"></span></p></a>
+    </li>
+</ul>
+
+     </div>
+       <!-- end of dont touch zone  -->
+
+     
+      <div data-role="footer" data-id="foo1" data-position="fixed">
+  
+
+  <div data-role="navbar"> <!-- /navbar -->
+           
+       <ul>
+           <li><a href="#home" data-icon="home">Home</a></li>
+           <li><a href="#directoryBrowser" data-icon="location">Browser</a></li>
+           <li><a href="#salon" data-icon="heart">Salon</a></li>
+           <li><a href="#myAccountLogin" data-icon="eye">Account</a></li>
+           <li><a href="#spReg" data-icon="user">Login</a></li>
+       </ul>
+   </div>
+       
+     </div>
+
+   </div>
+
+
+
+<!-- Page 3  - Salon service provider page -->
+ <div data-role="page" id="salon" class="ui-page-theme-b">
+ <a href="#directoryBrowser" data-rel="back" data-icon="back" class="ui-btn ui-icon-back ui-btn-icon-left ui-shadow ui-btn ui-corner-all ui-mini"></a>
+    
+     
+     <div data-role="header">
+
+           <!--logo image-->
+           <img src="images/Logo1.png"  width="20%">
+
+       </div>
+     
+     <div data-role="content"> 
+         
+  <p></br>
+   TriVision Hair & Beauty</br>
+  Crane Alley</br>
+  Dublin 8</br>
+
+  </br>
+
+
+<div class="videoholder">
+  <!-- This version of the embed code is no longer supported. Learn more: https://vimeo.com/s/tnm --  but it is the one that worked--> 
+<object width="100%" height="auto"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=1764801&amp;force_embed=1&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=1&amp;color=00adef&amp;fullscreen=1&amp;autoplay=1&amp;loop=0" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=1764801&amp;force_embed=1&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=1&amp;color=00adef&amp;fullscreen=1&amp;autoplay=1&amp;loop=0" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="100%" height="auto"></embed></object>
+</div>
+
+</br>
+  Contact us:</br>
+  01-6664555</br>
+  beauty@trivision.com</br>
+  www.trivisionbeauty.com</br>
+  </br>
+  
+<div class="saloninfo">
+  Established in 1998 we are one of Dublin's best-loved salons,</br>
+  voted top salon five years running.</br>
+  We understand the importance of your well-being. </br>
+  Using the best and latest products </br>
+  we can ensure you will look great and feel wonderful.
+  </br>
+  </br>
+  Hair, make-up, nails - your beauty is our business.
+  </div>
+</p>
+
+
+          <!--Book Now anchor button, links to page 4-->
+                    <a href="#myAccountLogin" class="ui-btn ui-corner-all">book now</a>
+
+       </div>
+     
+     <div data-role="footer" data-id="foo1" data-position="fixed">
+  
+  <div data-role="navbar">  <!--navbar-->
+        <ul> 
+           <li><a href="#home" data-icon="home">Home</a></li>
+           <li><a href="#directoryBrowser" data-icon="location">Browser</a></li>
+           <li><a href="#salon" data-icon="heart">Salon</a></li>
+           <li><a href="#myAccountLogin" data-icon="eye">Account</a></li>
+           <li><a href="#spReg" data-icon="user">Login</a></li>
+       </ul>
+  </div>
+       
+     </div>
+
+   </div>
+
+
+<!-- Page 4 - My Account / login   -->
+<div data-role="page" id="myAccountLogin" class="ui-page-theme-b">
+ <a href="#salon" data-rel="back" data-icon="back" class="ui-btn ui-icon-back ui-btn-icon-left ui-shadow ui-btn ui-corner-all ui-mini"></a>
+     
+     <div data-role="header">
+
+           <!--logo image-->
+           <img src="images/Logo1.png"  width="20%">
+
+       </div>
+     
+     <div data-role="content"> 
+          <h3>My account</h3>
+          <h4>Please login</h4>
+
+<!--Radio buttons - choose between logging in as Customer or Salon-->
+          <form>
+          <label>
+          <input type="radio" name="radio-choice-0" id="radio-choice-0a">Customer
+          </label>
+          <label for="radio-choice-0b">Salon</label>
+          <input type="radio" name="radio-choice-0" id="radio-choice-0b" class="custom">
+          </form>
+
+<!--login form -->
+<form>
+<div id="form_name">
+      <div class="username">
+       <form name="form" >
+       <div id="errorBox"></div>
+        <input type="text" name=" Username" value="" placeholder="Username"  class="input_name" class="required" minlength="5">
+     </div>
+      
+      <div id="password_form">
+        <input type="password" name="Password" value=""  placeholder="Password" class="input_password" class="required" minlength="5">
+      </div>
+    </div>
+
+<!--In live version will take to confirmation page, currently takes to home page-->
+<button onclick="Submit();">Enter </button>
+
+       </div>
+
+     
+     <div data-role="footer" data-id="foo1" data-position="fixed">
+  
+
+  <div data-role="navbar"> <!-- /navbar -->
+           
+       <ul>
+           <li><a href="#home" data-icon="home">Home</a></li>
+           <li><a href="#directoryBrowser" data-icon="location">Browser</a></li>
+           <li><a href="#salon" data-icon="heart">Salon</a></li>
+           <li><a href="#myAccountLogin" data-icon="eye">Account</a></li>
+           <li><a href="#spReg" data-icon="user">Login</a></li>
+       </ul>
+
+   </div>
+       
+     </div>
+
+   </div>
+
+
+<!-- Page 5 - SP signup   -->
+<div data-role="page" id="spReg" class="ui-page-theme-b">
+ <a href="#home" data-rel="back" data-icon="back" class="ui-btn ui-icon-back ui-btn-icon-left ui-shadow ui-btn ui-corner-all ui-mini"></a>
+     
+     <div data-role="header">
+
+           <!--logo image-->
+           <img src="images/Logo1.png"  width="20%">
+
+       </div>
+     
+     <div data-role="content"> 
+          <h3>Salon registration</h3>
+          <h4>Please enter your details</h4>
+
+<form>
+
+<!--reg form salons-->
+<div id="form_name">
+      <div class="firstnameorlastname">
+       <form name="form" >
+       <div id="errorBox"></div>
+        <input type="text" name="Name" value="" placeholder="First Name"  class="input_name" >
+        <input type="text" name="LastName" value="" placeholder="Last Name" class="input_name" >
+         </div>
+
+             <!--dropdown list of Counties-->
+    <div class="ui-field-contain">
+        <select name="select-custom-22" id="select-custom-22" data-native-menu="false">
+            <option>County</option>
+            <option value="1">Dublin 1</option>
+            <option value="2">Dublin 2</option>
+            <option value="3">Dublin 3</option>
+            <option value="4">Dublin 4</option>
+            <option value="5">Dublin 5</option>
+            <option value="6">Dublin 6</option>
+            <option value="7">Dublin 7</option>
+            <option value="8">Dublin 8</option>
+            <option value="9">Dublin 9</option>
+            <option value="10">Dublin 10</option>
+        </select>
+    </div>
+      <div id="email_form">
+        <input type="text" name="Email" value=""  placeholder="Your Email" class="input_email">
+      </div>
+      <div id="Re_email_form">
+        <input type="text" name="enterEmail" value=""  placeholder="Re-enter Email" class="input_Re_email">
+      </div>
+      <div id="password_form">
+        <input type="password" name="Password" value=""  placeholder="Password" class="input_password">
+      </div>
+        <div id="confirmpassword_form">
+        <input type="password" name="Password" value=""  placeholder="Confirm Password" class="input_password">
+      </div>
+      <a href="#" class="ui-btn ui-shadow">Register</a> <!--will take to registration confirmation page-->
+
+    </div>
+
+</form>
+
+       </div>
+
+     
+     <div data-role="footer" data-id="foo1" data-position="fixed">
+  <div data-role="navbar"> <!-- /navbar -->
+           
+       <ul>
+           <li><a href="#home" data-icon="home">Home</a></li>
+           <li><a href="#directoryBrowser" data-icon="location">Browser</a></li>
+           <li><a href="#salon" data-icon="heart">Salon</a></li>
+           <li><a href="#myAccountLogin" data-icon="eye">Account</a></li>
+           <li><a href="#spReg" data-icon="user">Login</a></li>
+       </ul>
+   
+
+   </div>
+       
+     </div>
+
+   </div>
+<!--Javascript starts here-->
+<!--image slider-->
+<script type="text/javascript" src="./js/slideshow1.js">
+</script>
+
+ </body>
+</html>
